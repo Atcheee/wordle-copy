@@ -1,0 +1,19 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--bg: #22292f;
+	--dark: #4f4f4f;
+	--light_blue: #00b0ff;
+	--green: #00f780;
+	--orange: #f7b500;
+	--red: #f73c00;
+}
+
+body {
+	font-family: Cambria, Cochin, Grorgia, Times, "Times New Roman", serif;
+	background-color: whitesmoke;
+	background-color: var(--bg);
+}
