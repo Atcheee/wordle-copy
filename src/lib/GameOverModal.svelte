@@ -34,9 +34,9 @@
 		board.set(createGrid5x6());
 	};
 
-	export let showModal: Boolean; // boolean
+	export let showModal: Boolean;
 
-	let dialog: any; // HTMLDialogElement
+	let dialog: any;
 
 	$: if (dialog && showModal) dialog.showModal();
 </script>
