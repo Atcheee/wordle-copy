@@ -1,12 +1,11 @@
 import { writable } from "svelte/store";
-import fiveLetterWords from './lib/data/five-letter-words.json'
 
-export async function getFiveLetterWord(fiveLetterWords: Array<string>) {
+export async function getFiveLetterWord(randomWordsJSON: Array<string>) {
   try {
     return {
       status: 200,
       body: {
-        fiveLetterWords
+        randomWordsJSON
       }
     }
   } catch (error) {
