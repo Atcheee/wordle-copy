@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let char: string;
-	export let keyPress;
+	export let keyPress: (key: string) => void;
 	const specialKeyClass =
 		char === "ENTER" || char === "DELETE" ? "key special" : "key";
 </script>
