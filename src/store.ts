@@ -1,10 +1,23 @@
 import { writable } from "svelte/store";
-import textFile from '../src/lib/data/five-letter-words.json';
+import fiveLetterWords from './lib/data/five-letter-words.json'
 
-// TODO: Fix fs and get random word from .txt file
+export async function getFiveLetterWord(fiveLetterWords: Array<string>) {
+  try {
+    return {
+      status: 200,
+      body: {
+        fiveLetterWords
+      }
+    }
+  } catch (error) {
+    return {
+      status: 500,
+      body: {
+        error
+      }
+    }
+  }
 
-export const random_five_letter_word = () => {
-  console.log(textFile[Math.floor(Math.random() * textFile.length)]);
 }
 
 export const createGrid5x6 = () => {
@@ -23,7 +36,7 @@ export const gameInfo = writable({
   attempt: 0,
 });
 
-export const word_guess = writable<String>("Hello");
+export const word_guess = writable<String>("Clone");
 export const guess = writable<String>("");
 export const game_over = writable<Boolean>(false);
 export const game_over_Won = writable<Boolean>(false);

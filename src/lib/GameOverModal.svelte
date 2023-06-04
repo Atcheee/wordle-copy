@@ -7,9 +7,25 @@
 		game_over_Won,
 		colors,
 		board,
+		getFiveLetterWord,
+		word_guess,
 	} from "../store";
 
+	import fiveLetterWords from "../lib/data/five-letter-words.json";
+
+	async function returnWord(): Promise<any> {
+		const returnValue = await getFiveLetterWord(fiveLetterWords);
+		return returnValue;
+	}
+
 	const playAgain = () => {
+		returnWord().then((word) => {
+			const randomWord =
+				word.body.fiveLetterWords[Math.floor(Math.random() * 9079)];
+
+			word_guess.set(randomWord.toUpperCase());
+		});
+
 		gameInfo.set({ attempt: 0, char: 0 });
 		guess.set("");
 		game_over.set(false);
@@ -28,7 +44,10 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <dialog
 	bind:this={dialog}
-	on:close={() => (showModal = false)}
+	on:close={() => {
+		showModal = false;
+		playAgain();
+	}}
 	on:click|self={() => dialog.close()}
 >
 	<div on:click|stopPropagation>
@@ -36,9 +55,7 @@
 		<slot />
 		<hr />
 		<!-- svelte-ignore a11y-autofocus -->
-		<button autofocus on:click={() => dialog.close() && playAgain}
-			>Play Again</button
-		>
+		<button autofocus on:click={() => dialog.close()}>Play Again</button>
 	</div>
 </dialog>
 
