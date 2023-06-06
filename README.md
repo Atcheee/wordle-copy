@@ -4,4 +4,4 @@
 
 ## Todo:
 
-Add keyboard press functionality. Currently you have to click the letters on screen to add the guessed letter.
+Have GameOverModal open after clicking "Enter" on the keyabord and getting the word correct. 
