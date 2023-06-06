@@ -91,6 +91,21 @@
 			}
 		}
 	};
+
+	// TODO: When the word is guessed, open the modal
+
+	function onKeyDown(e: KeyboardEvent) {
+		const isValidLetter = /^[a-z/A-Z]$/i.test(e.key);
+		if (e.key === "Backspace") {
+			keyPress("DELETE");
+		} else if (e.key === "Enter") {
+			keyPress("ENTER");
+		} else if (!isValidLetter) {
+			return;
+		} else {
+			keyPress(e.key.toUpperCase());
+		}
+	}
 </script>
 
 <div class="keyboard">
@@ -110,6 +125,8 @@
 		{/each}
 	</div>
 </div>
+
+<svelte:window on:keydown={(e) => onKeyDown(e)} />
 
 <style>
 	.keyboard {

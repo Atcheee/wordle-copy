@@ -20,9 +20,8 @@
 
 	const playAgain = () => {
 		returnWord().then((word) => {
-			const randomIndex = Math.floor(Math.random() * 9079);
-			const randomWord = word.body.fiveLetterWords[randomIndex];
-
+			const randomIndex = Math.floor(Math.random() * 9080);
+			const randomWord = word.body.randomWordsJSON[randomIndex];
 			word_guess.set(randomWord.toUpperCase());
 		});
 
